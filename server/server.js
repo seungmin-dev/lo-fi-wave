@@ -9,10 +9,6 @@ app.use(cors({
     method: ['GET', 'POST'],
     credentials: true
 }));
-// app.use('/api', api);
-
-// const port = 3030;
-// app.listen(port, ()=>console.log(`Listening on port ${port}`));
 
 app.get('/', cors(corsCheck), (req, res, next) => {
     res.send('Hello Express');
