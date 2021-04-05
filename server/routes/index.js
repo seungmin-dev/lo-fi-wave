@@ -3,7 +3,8 @@ var router = express.Router();
 
 
 router.get('/', function(req, res) {
-    res.send({gretting:'Hello React x Node.js'});
+    // res.send({gretting:'Hello React x Node.js'});
+    res.json({username:'seungmin'});
 });
 
 module.exports = router;
