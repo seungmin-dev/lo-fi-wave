@@ -2,7 +2,7 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const fs = require("fs");
 const fetch = require("node-fetch");
-const getYoutubeApi = require("./api");
+const youtubeApiKey = require("./api");
 
 var resultList = [];
 var cnt = 0;
@@ -26,9 +26,15 @@ const getHTML = (url) => {
 }
 
 const main = () => {
+    const getYoutubeApi = () => {
+        const fetchTest = async () => {
+            let response = await fetch(`https://www.googleapis.com/youtube/v3/videos?key=${youtubeApiKey}&part=contentDetails&chart=mostPopular&maxResults=50`);
+            let text = await response.text();
+            console.log('text:',text);
+        }
+        fetchTest();
+    }
     getYoutubeApi();
-
-    // /https://developers.google.com/youtube/v3/docs/search/list?hl=ko#javascript
 
     // var items = data.items;
     // console.log('items:',items);
