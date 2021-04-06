@@ -6,7 +6,7 @@ const youtubeApiKey = require("./api");
 
 var resultList = [];
 var cnt = 0;
-var data = "";
+let data = "";
 
 const delay = (ms) => {
     return new Promise(function(resolve, reject) {
@@ -26,18 +26,21 @@ const getHTML = (url) => {
 }
 
 const main = () => {
-    const getYoutubeApi = () => {
-        const fetchTest = async () => {
-            let response = await fetch(`https://www.googleapis.com/youtube/v3/videos?key=${youtubeApiKey}&part=contentDetails&chart=mostPopular&maxResults=50`);
-            let text = await response.text();
-            console.log('text:',text);
-        }
-        fetchTest();
+    const getData = () => {
+        return new Promise(function(resolve, reject) {
+            const getYoutubeApi = async () => {
+                let response = await fetch(`https://www.googleapis.com/youtube/v3/videos?key=${youtubeApiKey}&part=contentDetails&chart=mostPopular&maxResults=2`);
+                data = await response.text();
+                resolve(data);
+            }
+            getYoutubeApi();
+        });
     }
-    getYoutubeApi();
+    getData().then(function(data) {
+        //var items = data.items;
+        console.log(data)
+    });
 
-    // var items = data.items;
-    // console.log('items:',items);
     // var itemArr = [];
     // for (let index = 0; index < items.length; index++) {
     //     const element = array[index];
@@ -45,7 +48,7 @@ const main = () => {
     // }
     // var list = allText.split('\n');
     //var list = items.split(',');
-    var result = [];
+    // var result = [];
     // for (let i = 0; i < list.length-1; i++) {
     //     result.push(list[i].split('^')[4]);
     // }
@@ -66,5 +69,4 @@ const main = () => {
     //     });
     // }
 }
-
 main();
