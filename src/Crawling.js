@@ -1,72 +1,35 @@
-const axios = require("axios");
-const cheerio = require("cheerio");
-const fs = require("fs");
+import React from "react";
 const fetch = require("node-fetch");
-const youtubeApiKey = require("./api");
 
-var resultList = [];
-var cnt = 0;
-let data = "";
 
-const delay = (ms) => {
-    return new Promise(function(resolve, reject) {
-        setTimeout(function() {
-            resolve();
-        }, ms);
-    });
-}
-const getHTML = (url) => {
-    return new Promise(resolve => {
-        delay(300).then(function() {
-            axios.get(url).then(function(data) {
-                resolve(data);
-            });
-        });
-    });
-}
-
-const main = () => {
+const Crawling = () => {
     const getData = () => {
         return new Promise(function(resolve, reject) {
             const getYoutubeApi = async () => {
-                let response = await fetch(`https://www.googleapis.com/youtube/v3/videos?key=${youtubeApiKey}&part=contentDetails&chart=mostPopular&maxResults=2`);
-                data = await response.text();
-                resolve(data);
+                await fetch(`https://www.googleapis.com/youtube/v3/search?key=${youtubeApiKey}&part=snippet&q=lofimusic&maxResults=2`).then((res) => {
+                    res.json().then((data) => {
+                        resolve(data);
+                    })
+                });
             }
             getYoutubeApi();
         });
     }
     getData().then(function(data) {
-        //var items = data.items;
-        console.log(data)
+        var items = data.items;
+        var idArr = [];
+        var titleArr = [];
+        var thumbnailsArr = [];
+        for (let index = 0; index < items.length; index++) {
+            let id = items[index].id.videoId;
+            idArr.push(id);
+            let title = items[index].snippet.title;
+            titleArr.push(title);
+            let thumbnail = items[index].snippet.thumbnails.high.url;
+            thumbnailsArr.push(thumbnail);
+        }
+        return (idArr, titleArr, thumbnailsArr);
     });
-
-    // var itemArr = [];
-    // for (let index = 0; index < items.length; index++) {
-    //     const element = array[index];
-        
-    // }
-    // var list = allText.split('\n');
-    //var list = items.split(',');
-    // var result = [];
-    // for (let i = 0; i < list.length-1; i++) {
-    //     result.push(list[i].split('^')[4]);
-    // }
-    // for (let j = 0; j < result.length; j++) {
-    //     getHTML(result[j]).then(html => {
-    //         let result = {};
-    //         const $ = cheerio.load(html.data);
-    //         result['title'] = $("body").find(".search_tit").text();
-    //         return result;
-    //     }).then(res => {
-    //         cnt++;
-    //         resultList.push(res);
-    //         if(result.length == cnt) {
-    //             fs.writeFile('youtube_result.txt', JSON.stringify(resultList), 'utf8', function(error) {
-    //                 console.log('write end');
-    //             });
-    //         }
-    //     });
-    // }
 }
-main();
+
+export default Crawling;

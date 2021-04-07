@@ -1,10 +1,17 @@
 import React, {useEffect, useState} from "react";
 
 function App() {
-  const [username, setUsername] = useState("");
+  const [idArr, setIdArr] = useState("");
+  const [titleArr, setTitleArr] = useState("");
+  const [thumbnailsArr, setThumbnailsArr] = useState("");
   const getData = async () => {
-    const data = await fetch('http://localhost:3030/api')
-    .then(res=>res.json().then(data=>setUsername(data.username)));
+    await fetch('http://localhost:3030/api').then((res) => {
+      res.json().then((data) => {
+        setIdArr(data.idArr);
+        setTitleArr(data.titleArr);
+        setThumbnailsArr(data.thumbnailsArr);
+      });
+    });
   }
   useEffect(() => {
     getData();
@@ -12,7 +19,9 @@ function App() {
 
   return (
     <div className="App">
-      {username ? `Hello ${username}` : 'Hello world'}
+      <span>{idArr}</span>
+      <span>{titleArr}</span>
+      <span>{thumbnailsArr}</span>
     </div>
   );
 }

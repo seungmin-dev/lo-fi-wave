@@ -18,18 +18,18 @@ app.use(bodyParser.json());
 app.use('/api', api);
 
 app.listen(port, () => {
-    console.log(`express is running on ${port}`);
+  console.log(`express is running on ${port}`);
 });
 
 function corsCheck(req, callback) {
-    let corsOptions;
-    const acceptList = [
-      // ... url list,
-    ];
-    if (acceptList.indexOf(req.header('Origin')) !== -1) {
-      corsOptions = { origin: true };
-    } else {
-      corsOptions = { origin: false };
-    }
-    callback(null, corsOptions);
+  let corsOptions;
+  const acceptList = [
+    // ... url list,
+  ];
+  if (acceptList.indexOf(req.header('Origin')) !== -1) {
+    corsOptions = { origin: true };
+  } else {
+    corsOptions = { origin: false };
   }
+  callback(null, corsOptions);
+}
