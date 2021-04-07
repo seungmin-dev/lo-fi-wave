@@ -1,7 +1,6 @@
 import React from "react";
 
-const LP = () => {
-
+const LP = ({thumbnailsArr}) => {
     return (
         <span>LP Component</span>
     )

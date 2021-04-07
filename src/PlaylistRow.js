@@ -1,9 +1,14 @@
-import React from "react";
+import React, {Link} from "react";
 
 const Row = ({item}) => {
-    console.log('li item:',item);
+    console.log('item : ',item);
     return(
-        <li>https://www.youtube.com/watch?v={item}</li>
+        <li>
+            <a href="https://www.youtube.com/watch"
+            onclick="location.href=this.href+'?v='+item;return false;" target="_blank">
+                {item.title}
+            </a>
+        </li>
     )
 }
 

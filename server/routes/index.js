@@ -4,10 +4,6 @@ var router = express.Router();
 var youtubeApiKey = require("../../src/apiKey");
 
 router.get('/', function(req, res) {
-    var idArr = [];
-    var titleArr = [];
-    var thumbnailsArr = [];
-
     const getData = () => {
         return new Promise(function(resolve, reject) {
             const getYoutubeApi = async () => {
@@ -22,15 +18,21 @@ router.get('/', function(req, res) {
     }
     getData().then(function(data) {
         var items = data.items;
+        var itemArr = [];
         for (let index = 0; index < items.length; index++) {
             let id = items[index].id.videoId;
-            idArr.push(id);
             let title = items[index].snippet.title;
-            titleArr.push(title);
             let thumbnail = items[index].snippet.thumbnails.high.url;
-            thumbnailsArr.push(thumbnail);
+
+            var itemObj = {};
+
+            itemObj.id = id;
+            itemObj.title = title;
+            itemObj.thumbnail = thumbnail;
+            
+            itemArr[index] = itemObj;
         }
-        res.send({idArr:idArr, titleArr:titleArr, thumbnailsArr:thumbnailsArr});
+        res.send(itemArr);
     });
 });
 
