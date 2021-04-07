@@ -11,7 +11,7 @@ router.get('/', function(req, res) {
     const getData = () => {
         return new Promise(function(resolve, reject) {
             const getYoutubeApi = async () => {
-                await fetch(`https://www.googleapis.com/youtube/v3/search?key=${youtubeApiKey}&part=snippet&q=lofimusic&maxResults=2`).then((res) => {
+                await fetch(`https://www.googleapis.com/youtube/v3/search?key=${youtubeApiKey}&part=snippet&q=lofimusic&maxResults=50`).then((res) => {
                     res.json().then((data) => {
                         resolve(data);
                     })
