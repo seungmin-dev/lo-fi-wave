@@ -1,10 +1,14 @@
 import React from "react";
+import Row from "./PlaylistRow";
 
 const Playlist = ({idArr}) => {
+    console.log('idArr:',idArr);
     return (
         <>
             <span>Playlist</span>
-            <p>{idArr.map(id => `${id}\n`)}</p>
+            <ul>
+                {idArr.map(item => <Row key={item} item={item} />)}
+            </ul>
         </>
     )
 }
