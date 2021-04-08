@@ -26,9 +26,9 @@ function App() {
 
     return (
         <div className="App">
-        <Playlist itemArr={itemArr} />
-        {/* <LP thumbnailsArr={thumbnailsArr} />
-        <Descbox titleArr={titleArr} /> */}
+            <Playlist itemArr={itemArr} />
+            {/* <LP thumbnailsArr={thumbnailsArr} />
+            <Descbox titleArr={titleArr} /> */}
         </div>
     );
 }
