@@ -68,3 +68,48 @@ form {
   width: 100%;
   height: auto;
 }
+.circle {
+  width: 25vw;
+  height: 25vw;
+  border-radius: 100%;
+  position: absolute;
+  top: 15vh;
+  right: 20.5vw;
+  z-index: 10;
+  background-color: #000;
+  animation: rotating 5s linear infinite;
+}
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.inner__circle {
+  width: 15vw;
+  height: 15vw;
+  border-radius: 100%;
+  margin: 5vw auto;
+  background-size: auto 140%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.descBox {
+  width: 25vw;
+  height: 16vh;
+  background-color: transparent;
+  position: absolute;
+  top: calc(18vh + 25vw);
+  right: 20.5vw;
+  z-index: 10;
+  border-radius: 15px;
+}
+.descTitle {
+  color: #333;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}

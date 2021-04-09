@@ -1,8 +1,13 @@
 import React from "react";
 
-const LP = ({thumbnailsArr}) => {
+const LP = ({itemArr, lpImg}) => {
     return (
-        <span>LP Component</span>
+        <>
+            <div className="circle">
+                <div className="inner__circle" style={{backgroundImage:`url(${lpImg})`}}></div>
+            </div>
+            <span>LP Component</span>
+        </>
     )
 }
 

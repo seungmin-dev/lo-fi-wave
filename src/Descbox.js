@@ -1,8 +1,10 @@
 import React from "react";
 
-const Descbox = ({titleArr}) => {
+const Descbox = ({title}) => {
     return (
-        <span>Descbox</span>
+        <div className="descBox">
+            <h3 className="descTitle">{title}</h3>
+        </div>
     )
 }
 
