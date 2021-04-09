@@ -4,6 +4,7 @@ import Playlist from "./Playlist";
 import Descbox from "./Descbox";
 
 function App() {
+    const [bgUrl, setBgUrl] = useState("");
     const [idArr, setIdArr] = useState("");
     const [titleArr, setTitleArr] = useState("");
     const [thumbnailsArr, setThumbnailsArr] = useState("");
@@ -26,7 +27,8 @@ function App() {
 
     return (
         <div className="App">
-            <Playlist itemArr={itemArr} />
+            <div className="bgBox" style={{backgroundImage:`url(${bgUrl})`}}></div>
+            <Playlist itemArr={itemArr} onClickRow={(url) => setBgUrl(url)} />
             {/* <LP thumbnailsArr={thumbnailsArr} />
             <Descbox titleArr={titleArr} /> */}
         </div>

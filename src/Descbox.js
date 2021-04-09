@@ -1,6 +1,6 @@
 import React from "react";
 
-const Descbox = () => {
+const Descbox = ({titleArr}) => {
     return (
         <span>Descbox</span>
     )

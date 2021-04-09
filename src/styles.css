@@ -1,0 +1,70 @@
+@import "https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css";
+
+* {
+  box-sizing: border-box;
+}
+
+input {
+  all: unset;
+  box-sizing: border-box;
+  appearance: none;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  width: 100vw;
+  height: 100vh;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+.App {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+button {
+  background-color: white;
+  color: black;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+form {
+  width: 100%;
+}
+
+.bgBox {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: blur(6px);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.playListBox {
+  width: 30vw;
+  height: 70vh;
+  overflow-y: scroll;
+  position: absolute;
+  top: 15vh;
+  left: 17.5vw;
+  z-index: 10;
+}
+.inner__playListBox {
+  width: 100%;
+  height: auto;
+}
