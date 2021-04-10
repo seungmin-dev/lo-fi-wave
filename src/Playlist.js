@@ -1,10 +1,9 @@
-import React, {useState} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import Row from "./PlaylistRow";
 
 const Playlist = ({itemArr, onClickRow, onClickTitle}) => {
     const [bgUrl, setBgUrl] = useState("");
     const [title, setTitle] = useState("");
-
     return (
         <>
             <span>Playlist</span>

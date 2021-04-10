@@ -4,18 +4,15 @@ import Playlist from "./Playlist";
 import Descbox from "./Descbox";
 
 function App() {
-    const [bgUrl, setBgUrl] = useState("");
-    const [titleText, setTitleText] = useState("");
-
+    let [bgUrl, setBgUrl] = useState("");
+    let [titleText, setTitleText] = useState("");
     const [itemArr, setItemArr] = useState("");
     const getData = async () => {
         await fetch('http://localhost:3030/api').then((res) => {
             res.json().then((data) => {
-                // setIdArr(data.idArr);
-                // setTitleArr(data.titleArr);
-                // setThumbnailsArr(data.thumbnailsArr);
-
                 setItemArr(data);
+                setBgUrl(data[0].thumbnail);
+                setTitleText(data[0].title);
             });
         });
     }
