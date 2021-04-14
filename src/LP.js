@@ -18,7 +18,9 @@ const LP = ({itemArr, lpImg, musicUrl}) => {
             <div className="circle">
                 <div className="inner__circle" style={{backgroundImage:`url(${lpImg})`}}></div>
             </div>
-            <iframe className="iframe" width="560" height="315" src={`https://www.youtube.com/embed/${myId}`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe className="iframe" id="ytplayer" type="text/html" width="640" height="360"
+            src={`https://www.youtube.com/embed/${myId}?autoplay=1&origin=http://youtube.com`}
+            frameborder="0"></iframe>
             <div className="console">
                 <button className="prev"></button>
                 <button className="pause"></button>
