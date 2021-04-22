@@ -119,3 +119,16 @@ form {
   right: 30vw;
   top: 10vh;
 }
+.console {
+  position: absolute;
+  z-index: 30;
+  top: 20vh;
+  right: 3vw;
+  width: 40vw;
+  height: 20vh;
+}
+.conBtn {
+  width: 30px;
+  height: 50px;
+  background-color: #fff;
+}

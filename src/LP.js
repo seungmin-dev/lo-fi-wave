@@ -11,6 +11,15 @@ const LP = ({itemArr, lpImg, musicUrl}) => {
             return 'error';
         }
     }
+    const onClickPrev = () => {
+        console.log('onCLickprev');
+    }
+    const onClickPause = () => {
+        console.log('onCLickPause');
+    }
+    const onClickNext = () => {
+        console.log('onClickNext');
+    }
     let myId = getId(musicUrl);
     console.log('myId : ',myId);
     return (
@@ -22,9 +31,9 @@ const LP = ({itemArr, lpImg, musicUrl}) => {
             src={`https://www.youtube.com/embed/${myId}?autoplay=1&origin=http://youtube.com`}
             frameborder="0"></iframe>
             <div className="console">
-                <button className="prev"></button>
-                <button className="pause"></button>
-                <button className="next"></button>
+                <button className="conBtn" id="prev" onClick={onClickPrev}></button>
+                <button className="conBtn" id="pause" onClick={onClickPause}></button>
+                <button className="conBtn" id="next" onClick={onClickNext}></button>
             </div>
             <span>LP Component</span>
         </>
